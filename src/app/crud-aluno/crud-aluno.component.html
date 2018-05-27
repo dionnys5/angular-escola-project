@@ -13,10 +13,10 @@
         </tr>
         </thead>
         <tbody>
-        <tr *ngFor="let d of ListaAlunos">
-            <td>{{d.id}}</td>
-            <td>{{d.nome}}</td>
-            <td>{{d.curso}}</td>
+        <tr *ngFor="let a of ListaAlunos">
+            <td>{{a.id}}</td>
+            <td>{{a.nome}}</td>
+            <td>{{a.curso}}</td>
         </tr>
         </tbody>
     </table>
@@ -32,14 +32,14 @@
                 <mat-error>Insira um nome</mat-error>
             </mat-form-field>
             <mat-form-field class="col">
-                <mat-select placeholder="Escolha uma área" id="area" name="area" [(ngModel)]="curso" required>
-                    <mat-option value="Matemática">Matemática</mat-option>
-                    <mat-option value="Computação">Computação</mat-option>
-                    <mat-option value="Português">Português</mat-option>
-                    <mat-option value="História">História</mat-option>
-                    <mat-option value="Institucional">Institucional</mat-option>
+                <mat-select placeholder="Escolha um Curso" id="curso" name="curso" [(ngModel)]="curso" required>
+                    <mat-option value="Matemática">Ciência da Computação</mat-option>
+                    <mat-option value="Computação">Psicologia</mat-option>
+                    <mat-option value="Português">Engenharia Civil</mat-option>
+                    <mat-option value="História">Direito</mat-option>
+                    <mat-option value="Institucional">Sistemas de Informação</mat-option>
                 </mat-select>
-                <mat-error>Selecione uma área</mat-error>
+                <mat-error>Selecione o curso do aluno</mat-error>
             </mat-form-field>
         </div>
         <div class="row">

@@ -18,7 +18,8 @@ import { MainNavComponent } from './main-nav/main-nav.component';
 import { LayoutModule } from '@angular/cdk/layout';
 import { MainTableComponent } from './main-table/main-table.component';
 
-import { DisciplinasService } from './disciplinas.service';
+import {DisciplinasService} from './disciplinas.service';
+import {AlunosService} from './alunos.service';
 
 @NgModule({
   declarations: [
@@ -51,7 +52,7 @@ import { DisciplinasService } from './disciplinas.service';
       MatPaginatorModule,
       MatSortModule
   ],
-  providers: [DisciplinasService],
+  providers: [DisciplinasService, AlunosService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
