@@ -1,0 +1,60 @@
+<div class="container">
+  <div class="jumbotron">
+    <h3>Cadastro Disciplinas</h3>
+    <p class="text-muted">Cadastrar nova disciplina no sistema</p>
+  </div>
+
+  <table class="table table-hover">
+    <thead>
+    <tr class="bg-info">
+      <td>Código</td>
+      <td>Nome</td>
+      <td>Área</td>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let d of ListaDisciplinas">
+      <td>{{d.id}}</td>
+      <td>{{d.nome}}</td>
+      <td>{{d.area}}</td>
+    </tr>
+    </tbody>
+  </table>
+
+
+  <div class="alert alert-success" *ngIf="salvar_ok">
+    <p>Disciplina foi salva com sucesso!</p>
+  </div>
+  <form #disciplinas="ngForm">
+    <div class="row">
+      <mat-form-field class="col">
+        <input matInput placeholder="Nome" id="nome" name="nome" [(ngModel)]="nome" required>
+        <mat-error>Insira um nome</mat-error>
+      </mat-form-field>
+      <mat-form-field class="col">
+        <mat-select placeholder="Escolha uma área" id="area" name="area" [(ngModel)]="area" required>
+          <mat-option value="Matemática">Matemática</mat-option>
+          <mat-option value="Computação">Computação</mat-option>
+          <mat-option value="Português">Português</mat-option>
+          <mat-option value="História">História</mat-option>
+          <mat-option value="Institucional">Institucional</mat-option>
+        </mat-select>
+        <mat-error>Selecione uma área</mat-error>
+      </mat-form-field>
+    </div>
+    <div class="row">
+      <mat-form-field class="col">
+      <textarea matInput placeholder="Descrição" id="descricao" name="descricao" [(ngModel)]="descricao" rows="5">
+      </textarea>
+      </mat-form-field>
+    </div>
+    <div class="row">
+      <div class="col text-right">
+        <button mat-raised-button class="m-2 btn btn-success" [disabled]="!disciplinas.valid" (click)="salvar()">
+          Salvar
+        </button>
+        <button mat-raised-button class="m-2 btn btn-secondary" (click)="limpar()">Cancelar</button>
+      </div>
+    </div>
+  </form>
+</div>
