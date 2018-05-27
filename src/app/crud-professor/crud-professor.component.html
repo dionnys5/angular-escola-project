@@ -15,8 +15,8 @@
     <tbody>
     <tr *ngFor="let p of ListaProfessores">
       <td>{{p.id}}</td>
-      <td>{{p.nome}}</td>
-      <td>{{p.contato}}</td>
+      <td>{{p.nome}} {{p.sobrenome}}</td>
+      <td>{{p.telefone}}</td>
     </tr>
     </tbody>
   </table>
@@ -25,26 +25,34 @@
   <div class="alert alert-success" *ngIf="salvar_ok">
     <p>Professor foi salvo com sucesso!</p>
   </div>
-  <form #disciplinas="ngForm">
+  <form #professores="ngForm">
     <div class="row">
       <mat-form-field class="col">
         <input matInput placeholder="Nome" id="nome" name="nome" [(ngModel)]="nome" required>
         <mat-error>Insira um nome</mat-error>
       </mat-form-field>
       <mat-form-field class="col">
-        <input matInput placeholder="Contato" id="contato" name="contato" [(ngModel)]="contato" required>
-        <mat-error>Insira um nome</mat-error>
+        <input matInput placeholder="Sobrenome" id="sobrenome" name="sobrenome" [(ngModel)]="sobrenome" required>
+        <mat-error>Insira o sobrenome</mat-error>
+      </mat-form-field>
+    </div>
+    <div class="row">
+      <mat-form-field class="col">
+        <input matInput type="email" placeholder="E-mail" id="email" name="email" [(ngModel)]="email" required>
+        <mat-error>Insira um e-mail valido</mat-error>
+      </mat-form-field>
+      <mat-form-field class="col">
+        <input matInput placeholder="Telefone" id="telefone" name="telefone" [(ngModel)]="telefone" required>
+        <mat-error>Insira um telefone</mat-error>
       </mat-form-field>
     </div>
     <div class="row">
       <div class="col text-right">
-        <button mat-raised-button class="m-2 btn btn-success" [disabled]="!disciplinas.valid" (click)="salvar()">
+        <button mat-raised-button class="m-2 btn btn-success" [disabled]="!professores.valid" (click)="salvarProfessor()">
           Salvar
         </button>
         <button mat-raised-button class="m-2 btn btn-secondary" (click)="limpar()">Cancelar</button>
       </div>
     </div>
   </form>
-</div>
-
 </div>
