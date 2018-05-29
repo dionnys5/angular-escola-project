@@ -28,7 +28,7 @@ export class CrudDisciplinaComponent implements OnInit {
         descricao: this.descricao
     })
         .subscribe(disciplina => {
-          alert('FUNCIONAAAAAAAAAA');
+          alert('Disciplina cadastrada com sucesso');
           this.salvar_ok = true;
           this.atualizarLista();
           this.limpar();
@@ -48,11 +48,5 @@ export class CrudDisciplinaComponent implements OnInit {
     this.nome = '';
     this.area = '';
     this.descricao = '';
-  }
-
-  getErrorMessage() {
-      return this.nome.hasError('required') ? 'You must enter a value' :
-            this.nome.hasError('Nome') ? 'Not a valid nome' :
-                '';
   }
 }

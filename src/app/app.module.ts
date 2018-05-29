@@ -13,10 +13,9 @@ import { MatFormFieldModule } from '@angular/material';
 import {
     MatInputModule, MatButtonModule, MatRippleModule, MatIconModule,
     MatOptionModule, MatSelectModule, MatToolbarModule, MatSidenavModule,
-    MatListModule, MatTableModule, MatPaginatorModule, MatSortModule } from '@angular/material';
+    MatListModule, MatTableModule, MatPaginatorModule, MatSortModule} from '@angular/material';
 import { MainNavComponent } from './main-nav/main-nav.component';
 import { LayoutModule } from '@angular/cdk/layout';
-import { MainTableComponent } from './main-table/main-table.component';
 
 import {DisciplinasService} from './disciplinas.service';
 import {AlunosService} from './alunos.service';
@@ -28,8 +27,7 @@ import {AlunosService} from './alunos.service';
       CrudAlunoComponent,
       CrudDisciplinaComponent,
       CrudTurmaComponent,
-      MainNavComponent,
-      MainTableComponent,
+      MainNavComponent
   ],
   imports: [
       BrowserModule,

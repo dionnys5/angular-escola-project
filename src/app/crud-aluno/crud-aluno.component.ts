@@ -28,7 +28,7 @@ export class CrudAlunoComponent implements OnInit {
         curso: this.curso,
     })
         .subscribe(aluno => {
-          alert('FUNCIONAAAAAAAAAA');
+          alert('Novo Aluno cadastrado com sucesso');
           this.salvar_ok = true;
           this.atualizarListaAlunos();
           this.limpar();
