@@ -2,7 +2,7 @@
 
 1. Use `python manage.py runserver` a partir da pasta escola_api para iniciar a API rest django. No browser acesse `http://127.0.0.1:8000` para visualizar as rotas disponiveis pela API
 
-2. As rotas para a navegação ainda não foram implementadas, para visualizar outros componentes troque o componente referenciado no template do componente nav-main.
+2. As rotas para a navegação ainda não foram implementadas, para visualizar outros componentes troque o componente referenciado no template do componente main-nav.
 
 3. Os CRUDs de Professores, Alunos, Disciplinas também foram implementados.
 
