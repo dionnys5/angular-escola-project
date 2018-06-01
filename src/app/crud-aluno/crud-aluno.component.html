@@ -33,16 +33,16 @@
             </mat-form-field>
             <mat-form-field class="col">
                 <mat-select placeholder="Escolha um Curso" id="curso" name="curso" [(ngModel)]="curso" required>
-                    <mat-option value="Matemática">Ciência da Computação</mat-option>
-                    <mat-option value="Computação">Psicologia</mat-option>
-                    <mat-option value="Português">Engenharia Civil</mat-option>
-                    <mat-option value="História">Direito</mat-option>
-                    <mat-option value="Institucional">Sistemas de Informação</mat-option>
+                    <mat-option value="Ciência da Computação">Ciência da Computação</mat-option>
+                    <mat-option value="Psicologiao">Psicologia</mat-option>
+                    <mat-option value="Engenharia">Engenharia Civil</mat-option>
+                    <mat-option value="Direito">Direito</mat-option>
+                    <mat-option value="Sistemas de Informação">Sistemas de Informação</mat-option>
                 </mat-select>
                 <mat-error>Selecione o curso do aluno</mat-error>
             </mat-form-field>
         </div>
-        <div class="row">
+        <div class="row mb-5">
             <div class="col text-right">
                 <button mat-raised-button class="m-2 btn btn-success" [disabled]="!alunos.valid" (click)="salvarAluno()">
                     Salvar
