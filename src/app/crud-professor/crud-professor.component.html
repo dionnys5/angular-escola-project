@@ -42,7 +42,7 @@
         <mat-error>Insira um e-mail valido</mat-error>
       </mat-form-field>
       <mat-form-field class="col">
-        <input matInput placeholder="Telefone" id="telefone" name="telefone" [(ngModel)]="telefone" required>
+        <input type="number" matInput placeholder="Telefone" id="telefone" name="telefone" [(ngModel)]="telefone" maxlength="11" required>
         <mat-error>Insira um telefone</mat-error>
       </mat-form-field>
     </div>

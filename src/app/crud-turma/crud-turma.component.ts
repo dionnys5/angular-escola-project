@@ -3,6 +3,7 @@ import {DisciplinasService} from '../disciplinas.service';
 import {ProfessoresService} from '../professores.service';
 import {AlunosService} from '../alunos.service';
 import {TurmasService} from '../turmas.service';
+import {HttpClient} from '@angular/common/http';
 
 @Component({
   selector: 'app-crud-turma',
@@ -33,10 +34,12 @@ export class CrudTurmaComponent implements OnInit {
   constructor(private disciplinasService: DisciplinasService,
               private professoresService: ProfessoresService,
               private alunosService: AlunosService,
-              private turmasService: TurmasService) {
+              private turmasService: TurmasService,
+              private http: HttpClient) {
       this.atualizaDisciplinas();
       this.atualizaProfessores();
       this.atualizaAlunos();
+      this.atualizaTurma();
   }
 
 
@@ -47,7 +50,7 @@ export class CrudTurmaComponent implements OnInit {
         this.turmasService.salvarTurma({
             professor: this.professor,
             disciplina: this.disciplina,
-            aluno: this.alunos,
+            aluno: [this.alunos],
             ano: this.ano
         }).subscribe( turma => {
                 this.salvar_ok = true;
@@ -57,7 +60,8 @@ export class CrudTurmaComponent implements OnInit {
                 this.status_lista = true;
                 }, () => {
             this.salvar_erro = true;
-            this.status_lista = false
+            this.status_lista = false;
+            alert('Erro, verifique os inputs');
             }
         );
   }
@@ -70,6 +74,7 @@ export class CrudTurmaComponent implements OnInit {
                   for (let i = 0; i < this.ListaTurmas.length; i++) {
                       this.ListaTurmas[i].aluno = this.ListaTurmas[i].aluno.length;
                   }
+                  console.log(this.ListaTurmas);
               }, () => alert('Erro')
           );
   }
@@ -103,7 +108,7 @@ export class CrudTurmaComponent implements OnInit {
 
   adicionaAluno() {
       const aluno = this.listaAlunos.pop(this.aluno);
-      this.alunos.push('http://127.0.0.1:8000/alunos/' + aluno.id);
+      this.alunos.push(aluno);
       console.log(this.alunos);
       this.alunosTurma.push(aluno);
   }
