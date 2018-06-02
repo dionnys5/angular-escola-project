@@ -28,6 +28,7 @@ router.register(r'alunos', AlunoViewSet)
 router.register(r'professores', ProfessorViewSet)
 router.register(r'turmas', TurmaViewSet)
 router.register(r'turmas-salvar', SalvaTurmaViewSet)
+
 urlpatterns = [
     path('admin/', admin.site.urls),
     url(r'^', include(router.urls)),

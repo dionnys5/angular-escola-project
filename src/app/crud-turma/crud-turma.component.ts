@@ -13,18 +13,17 @@ import {HttpClient} from '@angular/common/http';
 
 export class CrudTurmaComponent implements OnInit {
 
-
-  qtAlunos = null;
+  API_URL = 'http://127.0.0.1:8000';
   ListaTurmas = null;
   listaDisciplinas = null;
   listaProfessores = null;
   listaAlunos = null;
   alunosTurma = [];
-  alunos = [];
+  alunos = null;
 
   disciplina = null;
   professor = null;
-  aluno = null;
+  alunoSelect = null;
   ano = null;
 
   salvar_ok = null;
@@ -44,15 +43,17 @@ export class CrudTurmaComponent implements OnInit {
 
 
   ngOnInit() {
+      this.alunosService = this.listaAlunos;
   }
 
   salvarTurma() {
-        this.turmasService.salvarTurma({
-            professor: this.professor,
-            disciplina: this.disciplina,
-            aluno: [this.alunos],
+        const turma = {
+            professor: this.API_URL + '/professores/' + this.professor.id + '/',
+            disciplina: this.API_URL + '/disciplinas/' + this.disciplina.id + '/',
+            aluno: this.alunos,
             ano: this.ano
-        }).subscribe( turma => {
+        }
+        this.turmasService.salvarTurma(turma).subscribe( turma => {
                 this.salvar_ok = true;
                 alert('Turma cadastrada!');
                 this.atualizaTurma()
@@ -62,7 +63,7 @@ export class CrudTurmaComponent implements OnInit {
             this.salvar_erro = true;
             this.status_lista = false;
             alert('Erro, verifique os inputs');
-            }
+          }
         );
   }
 
@@ -74,8 +75,7 @@ export class CrudTurmaComponent implements OnInit {
                   for (let i = 0; i < this.ListaTurmas.length; i++) {
                       this.ListaTurmas[i].aluno = this.ListaTurmas[i].aluno.length;
                   }
-                  console.log(this.ListaTurmas);
-              }, () => alert('Erro')
+              }, () => alert('Erro ao carregar as turmas')
           );
   }
 
@@ -102,22 +102,22 @@ export class CrudTurmaComponent implements OnInit {
         .subscribe(
             alunos => {
               this.listaAlunos = alunos;
-            }, () => this.listaAlunos = 'erro'
+            }, () => alert('Erro ao carregar alunos')
         );
   }
 
   adicionaAluno() {
-      const aluno = this.listaAlunos.pop(this.aluno);
-      this.alunos.push(aluno);
-      console.log(this.alunos);
+      const aluno = this.listaAlunos.pop(this.alunoSelect);
+      this.alunos = [];
+      this.alunos.push(this.API_URL + '/alunos/' + aluno.id + '/');
       this.alunosTurma.push(aluno);
   }
 
-  limpar(){
+  limpar() {
       this.professor = null;
       this.disciplina = null;
       this.alunosTurma = [];
-      this.aluno = null;
+      this.alunoSelect = null;
       this.atualizaAlunos();
   }
 }

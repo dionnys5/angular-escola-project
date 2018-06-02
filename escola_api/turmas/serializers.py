@@ -7,7 +7,7 @@ from disciplinas.serializers import DisciplinaSerializer
 
 
 class TurmaSerializer(serializers.HyperlinkedModelSerializer):
-    professor = ProfessorSerializer( )
+    professor = ProfessorSerializer()
     disciplina = DisciplinaSerializer()
     aluno = AlunoSerializer(many=True)
     class Meta:
@@ -18,3 +18,4 @@ class SalvaTurmaSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = Turma
         fields = ('id', 'professor', 'disciplina', 'aluno', 'ano')
+        

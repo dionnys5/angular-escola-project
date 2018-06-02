@@ -14,7 +14,7 @@
       </tr>
       </thead>
       <tbody>
-      <tr *ngFor="let t of ListaTurmas">
+      <tr *ngFor="let t of ListaTurmas" role="button" class="turmas">
         <td>{{t.id}}</td>
         <td>{{t.disciplina.nome}}</td>
         <td>{{t.professor.nome}}</td>
@@ -31,30 +31,39 @@
   </div>
   <form #turmas="ngForm">
     <div class="row">
+
       <mat-form-field class="col">
-      <mat-select placeholder="Disciplina" id="disciplina" name="disciplina" [(ngModel)]="disciplina" required>
-        <mat-option *ngFor="let d of listaDisciplinas" value="d">{{d.nome}}</mat-option>
+      <mat-select placeholder="Selecione uma disciplina" id="disciplina" name="disciplina" [(ngModel)]="disciplina" required>
+        <mat-option *ngFor="let d of listaDisciplinas" [value]="d">{{d.nome}}</mat-option>
       </mat-select>
       <mat-error>Todos os campos são obrigatórios</mat-error>
     </mat-form-field>
+
       <mat-form-field class="col">
-        <mat-select placeholder="Professor" id="professor" name="professor" [(ngModel)]="professor" required>
-          <mat-option *ngFor="let p of listaProfessores" value="p">{{p.nome}}</mat-option>
+        <mat-select placeholder="Selecione um professor" id="professor" name="professor" [(ngModel)]="professor" required>
+          <mat-option *ngFor="let p of listaProfessores" [value]="p">{{p.nome}}</mat-option>
         </mat-select>
       </mat-form-field>
+
       <mat-form-field class="col-3">
         <input matInput placeholder="Ano" id="ano" name="ano" [(ngModel)]="ano" maxlength="4" required>
       </mat-form-field>
+
     </div>
     <div class="row">
+
       <mat-form-field class="col">
-        <mat-select placeholder="Alunos" id="aluno" name="aluno" [(ngModel)]="aluno" required>
-          <mat-option *ngFor="let aluno of listaAlunos" [value]="aluno">{{aluno.nome}} {{aluno.sobrenome}}</mat-option>
+        <mat-select placeholder="Selecione um aluno" [(ngModel)]="alunoSelect" name="alunoSelect">
+          <mat-option *ngFor="let a of listaAlunos" [value]="a">
+            {{a.nome}} {{a.sobrenome}}
+          </mat-option>
         </mat-select>
       </mat-form-field>
+
       <button mat-mini-fab color="primary" class="m-3 mr-4" (click)="adicionaAluno()">
         <i class="material-icons">person_add</i>
       </button>
+
     </div>
   </form>
     <h4 class="text-center">Alunos da turma</h4>
@@ -74,7 +83,6 @@
         </tr>
       </tbody>
     </table>
-
 
   <div class="row">
     <div class="col text-right">
