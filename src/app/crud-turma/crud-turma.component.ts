@@ -24,11 +24,12 @@ export class CrudTurmaComponent implements OnInit {
   disciplina = null;
   professor = null;
   alunoSelect = null;
-  ano = null;
+  ano = 2018;
 
   salvar_ok = null;
   salvar_erro = null;
   status_lista = null;
+  turma_excluida = null;
 
   constructor(private disciplinasService: DisciplinasService,
               private professoresService: ProfessoresService,
@@ -44,6 +45,25 @@ export class CrudTurmaComponent implements OnInit {
 
   ngOnInit() {
       this.alunosService = this.listaAlunos;
+  }
+
+  deletarTurma(turma) {
+      if (confirm('A turma será excluida permanentemente, deseja continuar?')) {
+          this.turmasService.deleteTurma(turma)
+              .subscribe(turmaExcluida => {
+                  this.turma_excluida = true;
+                  this.atualizaTurma();
+                  alert('Turma excluida com sucesso!');
+              }, () => alert('Erro ao excluir disciplina')
+      );
+      }
+  }
+
+  editarTurma(turma) {
+      this.professor = turma.professor;
+      this.disciplina = turma.disciplina;
+      this.ano = turma.ano;
+      this.alunosTurma = turma.aluno;
   }
 
   salvarTurma() {
@@ -72,9 +92,6 @@ export class CrudTurmaComponent implements OnInit {
           .subscribe(
               turmas => {
                   this.ListaTurmas = turmas;
-                  for (let i = 0; i < this.ListaTurmas.length; i++) {
-                      this.ListaTurmas[i].aluno = this.ListaTurmas[i].aluno.length;
-                  }
               }, () => alert('Erro ao carregar as turmas')
           );
   }
@@ -114,9 +131,10 @@ export class CrudTurmaComponent implements OnInit {
   }
 
   limpar() {
+      this.ano = null;
       this.professor = null;
       this.disciplina = null;
-      this.alunosTurma = [];
+      this.alunosTurma = null;
       this.alunoSelect = null;
       this.atualizaAlunos();
   }

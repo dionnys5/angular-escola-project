@@ -14,11 +14,14 @@ export class TurmasService {
   }
 
   salvarTurma(turma) {
-    const editando = null;
-    if (editando) {
-      return this.http.patch(this.API_URL + '/turmas-salvar/' + editando.id, turma);
-    } else {
-      return this.http.post(this.API_URL + '/turmas-salvar/', turma);
-    }
+    return this.http.post(this.API_URL + '/turmas-salvar/', turma);
+  }
+
+  editarTurma(turma) {
+    return this.http.patch(this.API_URL + '/turmas/' + turma.id, turma);
+  }
+
+  deleteTurma(turma) {
+    return this.http.delete(this.API_URL + '/turmas/' + turma.id);
   }
 }
